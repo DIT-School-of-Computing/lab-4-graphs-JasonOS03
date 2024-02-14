@@ -18,6 +18,7 @@ public class Arrays extends PApplet
 		float howFar = a - b;
 		return d + (howFar / r1) * r2;
 	}
+	
 
 	void randomize()
 	{
@@ -90,24 +91,45 @@ public class Arrays extends PApplet
 
 	
 	public void draw()
-	{	
+	{
+
 
 		background(0);
+		
 		float w = 500 / months.length - 1;
 		for(int i = 0 ; i < months.length ;  i ++)
 		{
+
+
+			
+			float colorspec = map1(i,0, months.length, 0, 255);
+
 			float x = map1(i, 0, months.length, 40, width-40);
-			rect(x,height - 40, w, -rainfall[i]);
+			fill(colorspec,255,225);
+			rect(x,height - 30, w, -rainfall[i]);
+			
 
 
 			textAlign(CENTER,CENTER);
-			fill(0,255,255);
+			fill(255);
 			text(months[i],x+w/2,height - 20);
+		}
 
 			textAlign(RIGHT);
-			fill(0,255,255);
-			text(rainfall[i],30,height-rainfall[i]);
+
+			
+			
+
+		for(int i = 0 ; i<=  120;i+=10)
+		{
+
+		
+			float y = map(i, 0,120, height - 30, 40);
+			fill(255);
+			text(i, 30, y);
 		}
+			
+		
 		
 		textAlign(CENTER);
 		text("Rainfall bar chart",width/2,20);
@@ -116,8 +138,9 @@ public class Arrays extends PApplet
 		stroke(255);
 		line(40,40,40,height-40);
 		
-		line(40,height-40,width-40,height-40);
+		line(30,height-30,width-30,height-30);
 		
 
-	}
+	}	
 }
+
