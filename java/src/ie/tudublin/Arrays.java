@@ -30,16 +30,12 @@ public class Arrays extends PApplet
 	{
 		size(500, 500);
 
-		String[] m1 = months;
-		months[0] = "XXX";
-		print(m1[0]);
+		
 		for(int i = 0; i < months.length; i ++)
 		{
 			println("Month: " + months[i] + "\t" + rainfall[i]);
 		}
-		for (String s : m1) {
-			println(s);
-		}
+		
 
 		int minIndex = 0;
 		for(int i= 0 ; i < rainfall.length ; i ++)
@@ -97,11 +93,31 @@ public class Arrays extends PApplet
 	{	
 
 		background(0);
-		float w = width / (float)months.length;
+		float w = 500 / months.length - 1;
 		for(int i = 0 ; i < months.length ;  i ++)
 		{
-			float x = map1(i, 0, months.length, 0, width);
-			rect(x, height, w, -rainfall[i]);
+			float x = map1(i, 0, months.length, 40, width-40);
+			rect(x,height - 40, w, -rainfall[i]);
+
+
+			textAlign(CENTER,CENTER);
+			fill(0,255,255);
+			text(months[i],x+w/2,height - 20);
+
+			textAlign(RIGHT);
+			fill(0,255,255);
+			text(rainfall[i],30,height-rainfall[i]);
 		}
+		
+		textAlign(CENTER);
+		text("Rainfall bar chart",width/2,20);
+
+
+		stroke(255);
+		line(40,40,40,height-40);
+		
+		line(40,height-40,width-40,height-40);
+		
+
 	}
 }
