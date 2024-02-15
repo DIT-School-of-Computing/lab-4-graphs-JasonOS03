@@ -92,55 +92,126 @@ public class Arrays extends PApplet
 	
 	public void draw()
 	{
-
-
-		background(0);
 		
-		float w = 500 / months.length - 1;
-		for(int i = 0 ; i < months.length ;  i ++)
+
+		if(keyCode == LEFT)
 		{
+			background(0);
+			
+			float w = 500 / months.length - 1;
+			for(int i = 0 ; i < months.length ;  i ++)
+			{
 
+
+				
+				float colorspec = map1(i,0, months.length, 0, 255);
+
+				float x = map1(i, 0, months.length, 40, width-40);
+				fill(colorspec,255,225);
+				rect(x,height - 30, w, -rainfall[i]);
+				
+
+
+				textAlign(CENTER,CENTER);
+				fill(255);
+				text(months[i],x+w/2,height - 20);
+			}
+
+				textAlign(RIGHT);
+
+				
+				
+
+			for(int i = 0 ; i<=  120;i+=10)
+			{
 
 			
-			float colorspec = map1(i,0, months.length, 0, 255);
+				float y = map(i, 0,120, height - 30, 40);
+				fill(255);
+				text(i, 30, y);
+			}
+				
+			
+			
+			textAlign(CENTER);
+			text("Rainfall bar chart",width/2,20);
 
-			float x = map1(i, 0, months.length, 40, width-40);
-			fill(colorspec,255,225);
-			rect(x,height - 30, w, -rainfall[i]);
+
+			stroke(255);
+			line(40,40,40,height-40);
+			
+			line(30,height-30,width-30,height-30);
 			
 
-
-			textAlign(CENTER,CENTER);
-			fill(255);
-			text(months[i],x+w/2,height - 20);
 		}
-
-			textAlign(RIGHT);
-
-			
-			
-
-		for(int i = 0 ; i<=  120;i+=10)
+		if(keyCode == RIGHT)
 		{
-
-		
-			float y = map(i, 0,120, height - 30, 40);
-			fill(255);
-			text(i, 30, y);
-		}
+			background(0);
 			
-		
-		
-		textAlign(CENTER);
-		text("Rainfall bar chart",width/2,20);
+			float w = 500 / months.length - 1;
+			for(int i = 0 ; i < months.length ;  i ++)
+			{
 
 
-		stroke(255);
-		line(40,40,40,height-40);
-		
-		line(30,height-30,width-30,height-30);
-		
+				
+				float colorspec = map1(i,0, months.length, 0, 255);
 
-	}	
+				float x = map1(i, 0, months.length, 40, width-40);
+				fill(colorspec,255,225);
+				line(x,height - 30, w, -rainfall[i]);
+				
+
+
+				textAlign(CENTER,CENTER);
+				fill(255);
+				text(months[i],x+w/2,height - 20);
+			}
+				for( int i=1;i<months.length-1;i++)
+				{
+
+				
+					stroke(255);
+					float y1 = height - rainfall[i];
+					float x1 = i*w+40;
+					float x2 = (i+1)*w+40;
+					float y2 = height - rainfall[i+1];
+
+					line(x1,y1,x2,y2);
+
+					
+					
+
+					
+					textAlign(RIGHT);
+				}
+
+				
+				
+
+			for( int i = 0 ; i<=  120;i+=10)
+			{
+
+			
+				float y = map(i, 0,120, height - 30, 40);
+				fill(255);
+				text(i, 30, y);
+			}
+				
+			
+			
+			textAlign(CENTER);
+			text("Rainfall Trend chart",width/2,20);
+
+
+			stroke(255);
+			line(40,40,40,height-40);
+			
+			line(30,height-30,width-30,height-30);
+			
+
+
+
+		}
+	}
 }
 
