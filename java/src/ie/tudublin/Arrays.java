@@ -15,6 +15,11 @@ public class Arrays extends PApplet
 		float r1 = c -b;
 		float r2 = e - d;
 
+		if(r1 == 0)
+		{
+			return d;
+		}
+
 		float howFar = a - b;
 		return d + (howFar / r1) * r2;
 	}
@@ -102,7 +107,7 @@ public class Arrays extends PApplet
 		{
 			background(0);
 			
-			float w = 500 / months.length - 1;
+			float w = (width - 80) / (float)months.length - 1;
 			for(int i = 0 ; i < months.length ;  i ++)
 			{
 
@@ -110,7 +115,7 @@ public class Arrays extends PApplet
 				
 				float colorspec = map1(i,0, months.length, 0, 255);
 
-				float x = map1(i, 0, months.length, 40, width-40);
+				float x = 40+i*w;
 				fill(colorspec,255,225);
 				rect(x,height - 30, w, -rainfall[i]);
 				
@@ -148,13 +153,13 @@ public class Arrays extends PApplet
 			
 
 		}
-		if(keyCode == RIGHT)
+		else if(keyCode == RIGHT)
 		{
 			background(0);
 			
-			float w = 500 / months.length - 1;
+			float w = 500 /(float) months.length - 1;
 			
-				for( int i=1;i<months.length-1;i++)
+				for( int i=0;i<months.length-1;i++)
 				{
 
 				
@@ -208,6 +213,47 @@ public class Arrays extends PApplet
 
 
 
+		}
+		 else if(keyCode == DOWN)
+		{
+			float startang = 0;
+			float sum = 0;
+			for(float f: rainfall)
+			{
+				sum = sum+f;
+			}
+
+
+			
+			for(int i  = 0;i<months.length;i++)
+			{
+				float angle = map(rainfall[i], 0, sum, 0, TWO_PI);
+				float colorspec2 = map1(i,0,months.length,0,255);
+				fill(colorspec2,255,255);
+				arc(width/2,height/2,200,200,startang,startang + angle);
+
+				float midpoint = startang + angle/2;
+				float x = width/2 + cos(midpoint)*115;
+				float y = height/2 + sin(midpoint)*115;
+
+				textAlign(CENTER,CENTER);
+				fill(255);
+				text(months[i],x,y);
+				startang+=angle;
+	
+				
+			}
+
+			
+			textAlign(CENTER,CENTER);
+			fill(255);
+			text("Rainfall piechart",width/2,height+20);
+		
+			
+
+			
+			
+			
 		}
 	}
 }
