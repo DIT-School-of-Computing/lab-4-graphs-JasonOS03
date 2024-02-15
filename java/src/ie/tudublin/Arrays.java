@@ -20,12 +20,7 @@ public class Arrays extends PApplet
 	}
 	
 
-	void randomize()
-	{
-		for (int i = 0; i < rainfall.length; i++) {
-			rainfall[i] = random(500);
-		}
-	}
+	
 
 	public void settings()
 	{
@@ -87,6 +82,15 @@ public class Arrays extends PApplet
 		randomize();
 		
 		
+		
+	}
+
+	public void randomize()
+	{
+		for(int i = 0;i<rainfall.length;i++)
+		{
+			rainfall[i] = random(500);
+		}
 	}
 
 	
@@ -149,23 +153,7 @@ public class Arrays extends PApplet
 			background(0);
 			
 			float w = 500 / months.length - 1;
-			for(int i = 0 ; i < months.length ;  i ++)
-			{
-
-
-				
-				float colorspec = map1(i,0, months.length, 0, 255);
-
-				float x = map1(i, 0, months.length, 40, width-40);
-				fill(colorspec,255,225);
-				line(x,height - 30, w, -rainfall[i]);
-				
-
-
-				textAlign(CENTER,CENTER);
-				fill(255);
-				text(months[i],x+w/2,height - 20);
-			}
+			
 				for( int i=1;i<months.length-1;i++)
 				{
 
@@ -207,6 +195,15 @@ public class Arrays extends PApplet
 			line(40,40,40,height-40);
 			
 			line(30,height-30,width-30,height-30);
+
+			for(int i = 0;i<months.length;i++)
+			{
+				float x = map1(i, 0, months.length, 40, width-40);
+				textAlign(CENTER,CENTER);
+				fill(255);
+				text(months[i],x+w/2,height-20);
+
+			}
 			
 
 
